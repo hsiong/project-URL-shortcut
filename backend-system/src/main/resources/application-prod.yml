@@ -1,0 +1,32 @@
+
+
+config:
+  # 本地文件路径
+  localPath: /Users/vjf/Projects/idea/logs/base-end
+ 
+spring:  
+  # redis 配置
+  redis:
+    # 地址
+    host: localhost
+    # 密码
+    password: 123456
+    # 数据库索引
+    database: 0
+    # 端口，默认为6379
+    port: 6379
+  datasource:
+    druid:
+      # 主库数据源
+      master:
+        password: peak1203
+        url: jdbc:postgresql://localhost:5432/basics_yngishere?setUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=GMT%2B8&tinyInt1isBit=false
+        username: postgres
+      # 从库数据源开关/默认关闭
+      slave:
+        enabled: false
+        password: ''
+        url: ''
+        username: ''
+
+
