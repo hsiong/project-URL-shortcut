@@ -24,13 +24,17 @@ public interface RedisConstant {
     /**
      * 重复时间
      */
-    Integer REPEAT_TIME_SECOND = 10;
+    Integer REPEAT_TIME_SECOND = 1;
 
     /**
-     * 重复时间 - Mills
+     * 重复时间 - Mills 
+     * REPEAT_TIME_SECOND * 1000
      */
-    Integer REPEAT_TIME_MILL = REPEAT_TIME_SECOND * 1000;
+    Integer REPEAT_TIME_MILL = 1000;
 
+    /*************************** Cache-key ****************************/
+
+    String CACHE_KEY_SHORT_URL = "cache:shorturl";
 
 
 }

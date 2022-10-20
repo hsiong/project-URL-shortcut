@@ -33,7 +33,7 @@ public class RepeatSubmitUrlDataInterceptor extends RepeatSubmitInterceptor {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public boolean isRepeatSubmit(HttpServletRequest request) {
+    public boolean isRepeatSubmit(HttpServletRequest request, RepeatSubmit annotation) {
         String nowParams = "";
         if (request instanceof RepeatedlyRequestWrapper) {
             RepeatedlyRequestWrapper repeatedlyRequest = (RepeatedlyRequestWrapper) request;
@@ -51,14 +51,12 @@ public class RepeatSubmitUrlDataInterceptor extends RepeatSubmitInterceptor {
         String cacheRepeatKey = REPEAT_SUBMIT_KEY + md5Key ;
         Object redisObj = redisUtil.get(cacheRepeatKey);
         Long nowTime = System.currentTimeMillis();
+        long second = annotation.time();
         if (redisObj != null) {
             Long foreTime = (Long) redisObj;
-            if ((nowTime - foreTime) < (REPEAT_TIME_MILL)) {
-                return true;
-            }
-            return false;
+            return (nowTime - foreTime) < (second * REPEAT_TIME_MILL);
         }
-        redisUtil.set(cacheRepeatKey, nowTime, REPEAT_TIME_SECOND);
+        redisUtil.set(cacheRepeatKey, nowTime, second);
         return false;
     }
     

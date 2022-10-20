@@ -2,8 +2,10 @@ package tech.ynfy.shortcut.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tech.ynfy.frame.constant.RedisConstant;
 import tech.ynfy.frame.util.ConversionUtil;
 import tech.ynfy.frame.util.SerialNumberUtil;
 import tech.ynfy.shortcut.entity.ShortcutEntity;
@@ -26,6 +28,7 @@ public class ShortcutServiceImpl implements IShortcutService {
     private ShortcutMapper shortcutMapper;
     
     @Override
+    @Cacheable(cacheNames = RedisConstant.CACHE_KEY_SHORT_URL, key = "#id")
     public String getUrl(String id) {
         ShortcutEntity shortcut = shortcutMapper.selectById(id);
         if (shortcut == null) {

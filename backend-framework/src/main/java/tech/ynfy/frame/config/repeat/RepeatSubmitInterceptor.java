@@ -23,8 +23,9 @@ public abstract class RepeatSubmitInterceptor implements AsyncHandlerInterceptor
             Method method = handlerMethod.getMethod();
             RepeatSubmit annotation = method.getAnnotation(RepeatSubmit.class);
             if (annotation != null) {
-                if (this.isRepeatSubmit(request)) {
-                    throw new IllegalArgumentException("重复提交，请稍后再试! ");
+                if (this.isRepeatSubmit(request, annotation)) {
+                    String msg = String.format("重复提交，请 %ss 后重复! ", annotation.time());
+                    throw new IllegalArgumentException(msg);
                 }
             }
         }
@@ -39,5 +40,5 @@ public abstract class RepeatSubmitInterceptor implements AsyncHandlerInterceptor
      * @return
      * @throws Exception
      */
-    public abstract boolean isRepeatSubmit(HttpServletRequest request);
+    public abstract boolean isRepeatSubmit(HttpServletRequest request, RepeatSubmit annotation);
 }

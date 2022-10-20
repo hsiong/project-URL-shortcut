@@ -11,4 +11,10 @@ import java.lang.annotation.*;
 @Documented
 public @interface RepeatSubmit {
 
+    /**
+     * 重复提交时间
+     * @return
+     */
+    long time() default 1;
+    
 }
