@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public void baseException(Exception e, HttpServletResponse response) throws IOException {
         String msg = "error: " + e.getMessage();
-        log.error(msg, e);
+//        log.error(msg, e);
 
         //返回结果
         response.setContentType("text/html");
