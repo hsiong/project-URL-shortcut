@@ -76,9 +76,9 @@
                     <include>**/*.xml</include>
                 </includes>
                 <!-- 找不到config, 会导致 yml failed to convert java.lang.String to int -->
-<!--                <excludes>-->
-<!--                    <exclude>application-dev.yml</exclude>-->
-<!--                </excludes>-->
+                <excludes>
+                    <exclude>application-dev.yml</exclude>
+                </excludes>
                 <!-- 这里要设置为true 否则不会扫描yml文件 -->
                 <filtering>true</filtering>
             </resource>

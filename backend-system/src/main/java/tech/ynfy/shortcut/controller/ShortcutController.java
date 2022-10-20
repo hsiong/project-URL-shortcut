@@ -32,6 +32,7 @@ public class ShortcutController {
 
 //    @PostMapping("/insertRedirect")
 //    @RepeatSubmit
+//    @CacheEvict(cacheNames = RedisConstant.CACHE_KEY_SHORT_URL, allEntries = true)
 //    public ShortcutEntity insertRedirect(@RequestBody ShortcutEntity entity) throws IOException {
 //        return iShortcutService.insertRedirect(entity);
 //    }
