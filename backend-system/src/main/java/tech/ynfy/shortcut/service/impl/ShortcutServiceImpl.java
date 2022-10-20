@@ -37,8 +37,6 @@ public class ShortcutServiceImpl implements IShortcutService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public ShortcutEntity insertRedirect(ShortcutEntity entity) {
-        String id = ConversionUtil.encode10To62(SerialNumberUtil.next());
-        entity.setId(id);
         String url = entity.getUrl();
         if (url == null || url.length() == 0) {
             throw new IllegalArgumentException("url can't be null!");
@@ -49,6 +47,9 @@ public class ShortcutServiceImpl implements IShortcutService {
         if (list != null && list.size() != 0) {
             throw new IllegalArgumentException("redirect url exist!");
         }
+
+        String id = ConversionUtil.encode10To62(SerialNumberUtil.next());
+        entity.setId(id);
         shortcutMapper.insert(entity);
         return entity;
     }

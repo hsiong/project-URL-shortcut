@@ -12,3 +12,5 @@ CREATE TABLE "public"."t_shortcut"
 );
 
 truncate t_shortcut;
+
+ALTER USER postgres WITH PASSWORD 'xxx';

@@ -44,6 +44,7 @@
     </profiles>
 
     <build>
+        <finalName>project-URL-shortcut</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -57,28 +58,6 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-jar-plugin</artifactId>-->
-            <!--                <version>3.0.2</version>-->
-            <!--                <configuration>-->
-            <!--                    <excludes>-->
-            <!--                        <exclude>/**/basedata/**</exclude>-->
-            <!--                    </excludes>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
 
         </plugins>
 
@@ -96,6 +75,9 @@
                     <include>**/*.yml</include>
                     <include>**/*.xml</include>
                 </includes>
+                <excludes>
+                    <exclude>application-dev.yml</exclude>
+                </excludes>
                 <!-- 这里要设置为true 否则不会扫描yml文件 -->
                 <filtering>true</filtering>
             </resource>
