@@ -75,6 +75,7 @@
                     <include>**/*.yml</include>
                     <include>**/*.xml</include>
                 </includes>
+                <!-- 找不到config, 会导致 yml failed to convert java.lang.String to int -->
                 <excludes>
                     <exclude>application-dev.yml</exclude>
                 </excludes>
