@@ -6,7 +6,7 @@ config:
   # redis 配置
   redis:
     # 地址
-    host: localhost
+    host: myredis
     # 密码
     password: 123456
     # 数据库索引
@@ -15,5 +15,5 @@ config:
     port: 6379
   datasource:
     password: 123456
-    url: localhost
+    url: postgres
     username: postgres
